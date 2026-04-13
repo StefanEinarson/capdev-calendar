@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breeding for Tomorrow | Capacity Development Opportunities 2026</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --surface: rgba(255,255,255,0.78);
+      --text: #1f2d2b;
+      --muted: #60706d;
+      --line: rgba(31,45,43,0.10);
+      --green-deep: #2f8927;
+      --green: #009933;
+      --blue-deep: #003580;
+      --earth: #cc3333;
+      --gold: #f6b833;
+      --sky: #0088c6;
+      --purple: #993399;
+      --shadow: 0 20px 50px rgba(19, 34, 29, 0.10);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --max: 1320px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(0,136,198,0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(47,137,39,0.14), transparent 26%),
+        linear-gradient(180deg, #f7f5ef 0%, #f2efe8 100%);
+      line-height: 1.5;
+    }
+
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 34px;
+      color: white;
+      background: linear-gradient(135deg, rgba(0,53,128,0.96) 0%, rgba(0,136,198,0.93) 40%, rgba(47,137,39,0.92) 100%);
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .hero::before {
+      width: 320px;
+      height: 320px;
+      right: -80px;
+      top: -80px;
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      left: -40px;
+      bottom: -80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      max-width: 780px;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 780px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1rem;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 26px;
+      align-items: end;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .metric .kicker {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.84;
+      font-weight: 700;
+    }
+
+    .metric .value {
+      margin-top: 8px;
+      font-size: 1.9rem;
+      font-weight: 800;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 315px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      padding: 20px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .helper {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .control { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.92);
+      color: var(--text);
+      font-size: 0.96rem;
+      outline: none;
+    }
+
+    input[type="text"]:focus, select:focus {
+      border-color: rgba(0,136,198,0.45);
+      box-shadow: 0 0 0 4px rgba(0,136,198,0.10);
+    }
+
+    .chip-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .chip-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 14px;
+      padding: 12px 13px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    .chip-check input { margin: 0; }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue-deep), var(--sky));
+      box-shadow: 0 10px 20px rgba(0,53,128,0.18);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+    }
+
+    .content {
+      display: grid;
+      gap: 22px;
+    }
+
+    .toolbar {
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .month-title {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .subdued {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .month-section {
+      padding: 0 20px 22px;
+    }
+
+    .month-section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .month-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .event-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88));
+      border: 1px solid rgba(31,45,43,0.08);
+      box-shadow: 0 18px 34px rgba(23,34,30,0.08);
+      display: grid;
+      gap: 12px;
+    }
+
+    .event-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 7px;
+      background: var(--sky);
+    }
+
+    .event-card.trial::before { background: var(--green); }
+    .event-card.lab::before { background: var(--purple); }
+    .event-card.data::before { background: var(--sky); }
+    .event-card.seed::before { background: var(--gold); }
+    .event-card.cross::before { background: var(--earth); }
+
+    .event-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .date-box {
+      min-width: 84px;
+      padding: 12px 10px;
+      border-radius: 18px;
+      text-align: center;
+      background: #f5f8fb;
+      border: 1px solid rgba(0,53,128,0.08);
+    }
+
+    .date-box .mon {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .date-box .day {
+      font-size: 1.65rem;
+      line-height: 1;
+      font-weight: 900;
+      margin: 6px 0;
+    }
+
+    .date-box .end {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .event-title {
+      margin: 0;
+      font-size: 1.12rem;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text);
+      background: #f3f6f8;
+      border: 1px solid rgba(31,45,43,0.08);
+    }
+
+    .badge.area { background: rgba(47,137,39,0.10); }
+    .badge.region { background: rgba(0,136,198,0.10); }
+    .badge.mode { background: rgba(153,51,153,0.10); }
+    .badge.quarter { background: rgba(246,184,51,0.16); }
+
+    .meta-list {
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .meta-list strong { color: var(--text); }
+
+    .desc {
+      margin: 0;
+      color: #42524f;
+      font-size: 0.95rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(0,53,128,0.08);
+      color: var(--blue-deep);
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .summary-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.75));
+      border: 1px solid rgba(31,45,43,0.08);
+    }
+
+    .summary-card .label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .summary-card .number {
+      margin-top: 10px;
+      font-size: 1.9rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .summary-card .small {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .regions-board {
+      padding: 0 20px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .region-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.82));
+      border: 1px solid rgba(31,45,43,0.08);
+    }
+
+    .region-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .region-count {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .region-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .empty-state {
+      margin: 0 20px 20px;
+      padding: 34px 24px;
+      text-align: center;
+      border-radius: 24px;
+      border: 1px dashed rgba(31,45,43,0.16);
+      color: var(--muted);
+      background: rgba(255,255,255,0.58);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(17, 27, 24, 0.42);
+      z-index: 1000;
+    }
+
+    .modal-backdrop.show { display: flex; }
+
+    .modal {
+      width: min(760px, 100%);
+      border-radius: 28px;
+      padding: 24px;
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(12,22,20,0.25);
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .modal h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .close-btn {
+      background: #f3f6f8;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .muted-block {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 1160px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .regions-board { grid-template-columns: repeat(2, 1fr); }
+      .month-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .shell { padding: 16px; }
+      .hero { padding: 24px; border-radius: 28px; }
+      .summary-grid, .regions-board { grid-template-columns: 1fr; }
+      .toolbar, .summary-grid, .regions-board { padding-left: 16px; padding-right: 16px; }
+      .month-section { padding: 0 16px 18px; }
+      .toolbar { padding-top: 16px; }
+      .event-head { flex-direction: column; }
+      .date-box { width: fit-content; }
+      .metric .value { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">CGIAR Breeding for Tomorrow · Capacity Development</div>
+          <h1>2026 training opportunities across regions and Breeding Resources service areas.</h1>
+          <p>
+            A year-at-a-glance view of capacity development opportunities for 2026. Filter by service group, region,
+            quarter, and delivery mode to explore what is planned across East Africa, West Africa, Mexico, and the Philippines.
+          </p>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="kicker">Training opportunities in 2026</div>
+            <div class="value" id="heroCount">0</div>
+          </div>
+          <div class="metric">
+            <div class="kicker">Regions covered</div>
+            <div class="value" id="heroRegions">0</div>
+          </div>
+          <div class="metric">
+            <div class="kicker">Groups represented</div>
+            <div class="value" id="heroGroups">0</div>
+          </div>
+          <div class="metric">
+            <div class="kicker">Delivery modes</div>
+            <div class="value" id="heroFormats">0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="panel sidebar">
+        <h2 class="section-title">Refine the calendar</h2>
+        <p class="helper">By default the full 2026 program is shown. Use filters to narrow the view by region, service area, quarter, or delivery mode.</p>
+
+        <div class="control">
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="text" placeholder="Search topic, audience, or location" />
+        </div>
+
+        <div class="control">
+          <label for="groupSelect">Group / area</label>
+          <select id="groupSelect"><option value="all">All groups</option></select>
+        </div>
+
+        <div class="control">
+          <label for="regionSelect">Region</label>
+          <select id="regionSelect"><option value="all">All regions</option></select>
+        </div>
+
+        <div class="control">
+          <label for="deliverySelect">Delivery mode</label>
+          <select id="deliverySelect">
+            <option value="all">All formats</option>
+            <option value="In Person">In person</option>
+            <option value="Virtual">Virtual</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label>Quarter</label>
+          <div class="chip-grid" id="quarterList"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="showAllBtn">Show full year</button>
+          <button class="btn-secondary" id="resetBtn">Reset</button>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="panel">
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="label">Visible trainings</div>
+              <div class="number" id="statVisible">0</div>
+              <div class="small">Across the selected filters</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Months active</div>
+              <div class="number" id="statMonths">0</div>
+              <div class="small">Months with visible opportunities</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Regions in view</div>
+              <div class="number" id="statRegions">0</div>
+              <div class="small">Geographies represented</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Groups in view</div>
+              <div class="number" id="statGroups">0</div>
+              <div class="small">Service areas represented</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <button class="btn-secondary" id="scrollTopBtn">Back to top</button>
+              <div>
+                <div class="month-title" id="yearLabel">2026 Training Opportunities</div>
+                <div class="subdued">Year-at-a-glance schedule for capacity development opportunities</div>
+              </div>
+            </div>
+            <div class="toolbar-right subdued" id="yearMeta">0 opportunities visible across the year</div>
+          </div>
+          <div id="eventsMount"></div>
+        </section>
+
+        <section class="panel">
+          <div class="toolbar">
+            <div>
+              <div class="month-title" style="font-size:1.2rem;">Regional snapshot</div>
+              <div class="subdued">A quick look at how the visible training opportunities are distributed.</div>
+            </div>
+          </div>
+          <div class="regions-board" id="regionsBoard"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-top">
+        <div>
+          <h3 id="modalTitle"></h3>
+          <div class="badge-row" id="modalBadges" style="margin-top:10px;"></div>
+        </div>
+        <button class="close-btn" id="modalClose">Close</button>
+      </div>
+      <div class="muted-block" id="modalMeta"></div>
+      <p id="modalDesc"></p>
+      <div class="muted-block" id="modalAudience"></div>
+    </div>
+  </div>
+
+  <script>
+    const trainingData = [
+      { id:1, title:'Advanced Trial Design for Multi-Environment Testing', date:'2026-01-20', endDate:'2026-01-22', group:'Trial & Nursery', region:'East Africa', location:'Nairobi, Kenya', format:'Hybrid', quarter:'Q1', categoryClass:'trial', audience:'Field coordinators, breeding teams, trial managers', description:'Design robust multi-environment testing workflows, strengthen site selection, and improve quality assurance across regional trials.' },
+      { id:2, title:'Lab Quality Management for Genotyping Workflows', date:'2026-02-10', endDate:'2026-02-12', group:'Lab Services', region:'West Africa', location:'Ibadan, Nigeria', format:'In Person', quarter:'Q1', categoryClass:'lab', audience:'Lab supervisors, technicians, molecular breeding teams', description:'A practical workshop on SOP alignment, sample tracking, QC checkpoints, and service turnaround improvement.' },
+      { id:3, title:'Breeding Data Fundamentals in R and Fieldbook Integration', date:'2026-02-24', endDate:'2026-02-26', group:'Data & Bioinformatics', region:'Philippines', location:'Los Baños, Philippines', format:'Hybrid', quarter:'Q1', categoryClass:'data', audience:'Data analysts, breeding associates, trial data stewards', description:'Build repeatable breeding data workflows with R, fieldbook standards, and interoperable data practices.' },
+      { id:4, title:'Cross-Site Capacity Development Planning Workshop', date:'2026-03-15', endDate:'2026-03-16', group:'Cross-cutting', region:'Mexico', location:'Texcoco, Mexico', format:'In Person', quarter:'Q1', categoryClass:'cross', audience:'Cap Dev leads, service managers, regional coordinators', description:'Develop regional annual plans, map facilitator capacity, and align training priorities across Breeding Resources.' },
+      { id:5, title:'Seed Health, Storage, and Regeneration Essentials', date:'2026-04-08', endDate:'2026-04-09', group:'Seed Systems', region:'East Africa', location:'Kampala, Uganda', format:'In Person', quarter:'Q2', categoryClass:'seed', audience:'Seed technicians, nursery managers, genebank support staff', description:'An applied session on seed handling, viability monitoring, documentation, and regeneration planning.' },
+      { id:6, title:'Nursery Operations and Digital Monitoring', date:'2026-04-21', endDate:'2026-04-23', group:'Trial & Nursery', region:'West Africa', location:'Tamale, Ghana', format:'Hybrid', quarter:'Q2', categoryClass:'trial', audience:'Nursery staff, trial technicians, regional operations leads', description:'Standardize nursery planning, scoring workflows, and mobile monitoring for distributed field teams.' },
+      { id:7, title:'DNA Extraction and Sample Integrity Bootcamp', date:'2026-05-11', endDate:'2026-05-13', group:'Lab Services', region:'Philippines', location:'Los Baños, Philippines', format:'In Person', quarter:'Q2', categoryClass:'lab', audience:'Technicians, new lab staff, service coordinators', description:'Improve extraction consistency, labeling discipline, and contamination prevention in high-throughput environments.' },
+      { id:8, title:'Applied Bioinformatics for Marker-Assisted Breeding', date:'2026-05-26', endDate:'2026-05-28', group:'Data & Bioinformatics', region:'Mexico', location:'Texcoco, Mexico', format:'Virtual', quarter:'Q2', categoryClass:'data', audience:'Bioinformaticians, molecular breeders, research associates', description:'Translate sequence and marker data into practical decision support for breeding pipelines.' },
+      { id:9, title:'Regional Trial Data Review and Decision Meetings', date:'2026-06-16', endDate:'2026-06-17', group:'Trial & Nursery', region:'East Africa', location:'Arusha, Tanzania', format:'Hybrid', quarter:'Q2', categoryClass:'trial', audience:'Breeding teams, data reviewers, regional leads', description:'Use trial evidence to strengthen advancement decisions and improve review meeting practice.' },
+      { id:10, title:'Laboratory Information Management Systems for Service Labs', date:'2026-07-07', endDate:'2026-07-09', group:'Lab Services', region:'East Africa', location:'Addis Ababa, Ethiopia', format:'Virtual', quarter:'Q3', categoryClass:'lab', audience:'Lab managers, informatics support, operations leads', description:'Explore practical LIMS workflows for accessioning, tracking, turnaround, and service reporting.' },
+      { id:11, title:'Training-of-Trainers for Breeding Resource Facilitators', date:'2026-08-03', endDate:'2026-08-05', group:'Cross-cutting', region:'West Africa', location:'Dakar, Senegal', format:'In Person', quarter:'Q3', categoryClass:'cross', audience:'Regional trainers, service focal points, learning leaders', description:'Build facilitation skills, course adaptation methods, and stronger regional delivery capacity.' },
+      { id:12, title:'Climate-Smart Trial Site Management', date:'2026-08-18', endDate:'2026-08-20', group:'Trial & Nursery', region:'Mexico', location:'Ciudad Obregón, Mexico', format:'Hybrid', quarter:'Q3', categoryClass:'trial', audience:'Trial coordinators, agronomy leads, field managers', description:'Focus on resilient site preparation, seasonal risk management, and stronger field data capture under variable conditions.' },
+      { id:13, title:'Phenotypic Data Quality Audits and Dashboards', date:'2026-09-14', endDate:'2026-09-15', group:'Data & Bioinformatics', region:'West Africa', location:'Virtual', format:'Virtual', quarter:'Q3', categoryClass:'data', audience:'Data managers, QA leads, breeding analysts', description:'Create simple dashboards and audit routines to improve data completeness, consistency, and trust.' },
+      { id:14, title:'Sample Logistics and Cold Chain Management', date:'2026-10-06', endDate:'2026-10-07', group:'Lab Services', region:'Philippines', location:'Manila, Philippines', format:'In Person', quarter:'Q4', categoryClass:'lab', audience:'Sample coordinators, shipping focal points, lab teams', description:'Strengthen sample movement planning, chain-of-custody discipline, and regional shipping practice.' },
+      { id:15, title:'Regional Seed Systems Readiness Review', date:'2026-10-27', endDate:'2026-10-29', group:'Seed Systems', region:'Mexico', location:'Texcoco, Mexico', format:'Hybrid', quarter:'Q4', categoryClass:'seed', audience:'Seed systems partners, breeders, logistics teams', description:'Assess readiness for distribution pipelines, supporting documentation, and partner coordination.' },
+      { id:16, title:'End-of-Year Breeding Resources Learning Summit', date:'2026-11-17', endDate:'2026-11-19', group:'Cross-cutting', region:'Philippines', location:'Los Baños, Philippines', format:'Hybrid', quarter:'Q4', categoryClass:'cross', audience:'All Breeding Resources groups and invited partners', description:'Share lessons learned, showcase regional innovations, and prioritize next-year capacity development investments.' }
+    ];
+
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    const els = {
+      searchInput: document.getElementById('searchInput'),
+      groupSelect: document.getElementById('groupSelect'),
+      regionSelect: document.getElementById('regionSelect'),
+      deliverySelect: document.getElementById('deliverySelect'),
+      quarterList: document.getElementById('quarterList'),
+      eventsMount: document.getElementById('eventsMount'),
+      regionsBoard: document.getElementById('regionsBoard'),
+      statVisible: document.getElementById('statVisible'),
+      statMonths: document.getElementById('statMonths'),
+      statRegions: document.getElementById('statRegions'),
+      statGroups: document.getElementById('statGroups'),
+      heroCount: document.getElementById('heroCount'),
+      heroRegions: document.getElementById('heroRegions'),
+      heroGroups: document.getElementById('heroGroups'),
+      heroFormats: document.getElementById('heroFormats'),
+      yearMeta: document.getElementById('yearMeta'),
+      modalBackdrop: document.getElementById('modalBackdrop'),
+      modalTitle: document.getElementById('modalTitle'),
+      modalBadges: document.getElementById('modalBadges'),
+      modalMeta: document.getElementById('modalMeta'),
+      modalDesc: document.getElementById('modalDesc'),
+      modalAudience: document.getElementById('modalAudience')
+    };
+
+    function parseDate(dateStr) {
+      return new Date(dateStr + 'T00:00:00');
+    }
+
+    function formatDateRange(start, end) {
+      const s = parseDate(start);
+      const e = parseDate(end || start);
+      if (!end || start === end) return `${monthNames[s.getMonth()]} ${s.getDate()}, ${s.getFullYear()}`;
+      if (s.getMonth() === e.getMonth()) return `${monthNames[s.getMonth()]} ${s.getDate()}–${e.getDate()}, ${s.getFullYear()}`;
+      return `${monthNames[s.getMonth()]} ${s.getDate()} – ${monthNames[e.getMonth()]} ${e.getDate()}, ${s.getFullYear()}`;
+    }
+
+    function uniqueValues(key) {
+      return [...new Set(trainingData.map(item => item[key]))].sort();
+    }
+
+    function populateControls() {
+      uniqueValues('group').forEach(group => {
+        const option = document.createElement('option');
+        option.value = group;
+        option.textContent = group;
+        els.groupSelect.appendChild(option);
+      });
+
+      uniqueValues('region').forEach(region => {
+        const option = document.createElement('option');
+        option.value = region;
+        option.textContent = region;
+        els.regionSelect.appendChild(option);
+      });
+
+      ['Q1','Q2','Q3','Q4'].forEach(q => {
+        const item = document.createElement('label');
+        item.className = 'chip-check';
+        item.innerHTML = `<input type="checkbox" value="${q}" checked /> <span>${q}</span>`;
+        els.quarterList.appendChild(item);
+      });
+    }
+
+    function selectedQuarters() {
+      return [...els.quarterList.querySelectorAll('input:checked')].map(el => el.value);
+    }
+
+    function getFilteredEvents() {
+      const search = els.searchInput.value.trim().toLowerCase();
+      const group = els.groupSelect.value;
+      const region = els.regionSelect.value;
+      const format = els.deliverySelect.value;
+      const quarters = selectedQuarters();
+
+      return trainingData.filter(event => {
+        const haystack = [event.title, event.group, event.region, event.location, event.audience, event.description].join(' ').toLowerCase();
+        return (!search || haystack.includes(search)) &&
+          (group === 'all' || event.group === group) &&
+          (region === 'all' || event.region === region) &&
+          (format === 'all' || event.format === format) &&
+          quarters.includes(event.quarter);
+      }).sort((a,b) => a.date.localeCompare(b.date));
+    }
+
+    function updateStats(allVisible) {
+      const regions = new Set(allVisible.map(e => e.region)).size;
+      const groups = new Set(allVisible.map(e => e.group)).size;
+      const formats = new Set(allVisible.map(e => e.format)).size;
+      const activeMonths = new Set(allVisible.map(e => {
+        const d = parseDate(e.date);
+        return `${d.getFullYear()}-${d.getMonth()}`;
+      })).size;
+
+      els.statVisible.textContent = allVisible.length;
+      els.statMonths.textContent = activeMonths;
+      els.statRegions.textContent = regions;
+      els.statGroups.textContent = groups;
+      els.heroCount.textContent = allVisible.length;
+      els.heroRegions.textContent = regions;
+      els.heroGroups.textContent = groups;
+      els.heroFormats.textContent = formats;
+      els.yearMeta.textContent = `${allVisible.length} opportunit${allVisible.length === 1 ? 'y' : 'ies'} visible across the year`;
+    }
+
+    function renderYear(events) {
+      if (!events.length) {
+        els.eventsMount.innerHTML = '<div class="empty-state">No training opportunities match your filters right now. Try broadening the filters.</div>';
+        return;
+      }
+
+      const grouped = {};
+      events.forEach(event => {
+        const d = parseDate(event.date);
+        const key = `${d.getFullYear()}-${String(d.getMonth()).padStart(2, '0')}`;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(event);
+      });
+
+      const sections = Object.keys(grouped).sort().map(key => {
+        const [year, month] = key.split('-').map(Number);
+        const cards = grouped[key].map(event => {
+          const d = parseDate(event.date);
+          const end = parseDate(event.endDate || event.date);
+          return `
+            <article class="event-card ${event.categoryClass}">
+              <div class="event-head">
+                <div>
+                  <h3 class="event-title">${event.title}</h3>
+                  <div class="badge-row" style="margin-top:10px;">
+                    <span class="badge area">${event.group}</span>
+                    <span class="badge region">${event.region}</span>
+                    <span class="badge mode">${event.format}</span>
+                    <span class="badge quarter">${event.quarter}</span>
+                  </div>
+                </div>
+                <div class="date-box">
+                  <div class="mon">${monthNames[d.getMonth()].slice(0,3)}</div>
+                  <div class="day">${d.getDate()}</div>
+                  <div class="end">to ${end.getDate()}</div>
+                </div>
+              </div>
+              <div class="meta-list">
+                <div><strong>Date:</strong> ${formatDateRange(event.date, event.endDate)}</div>
+                <div><strong>Location:</strong> ${event.location}</div>
+                <div><strong>Audience:</strong> ${event.audience}</div>
+              </div>
+              <p class="desc">${event.description}</p>
+              <div class="card-footer">
+                <div class="subdued">Sample demo class for planning and communications</div>
+                <button class="pill-link" data-event-id="${event.id}">View details →</button>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        return `
+          <section class="month-section" id="month-${monthNames[month].toLowerCase()}">
+            <div class="month-section-head">
+              <h3 style="margin:0;font-size:1.15rem;font-weight:900;letter-spacing:-0.02em;">${monthNames[month]} ${year}</h3>
+              <div class="subdued">${grouped[key].length} opportunit${grouped[key].length === 1 ? 'y' : 'ies'}</div>
+            </div>
+            <div class="month-grid">${cards}</div>
+          </section>
+        `;
+      }).join('');
+
+      els.eventsMount.innerHTML = sections;
+      els.eventsMount.querySelectorAll('[data-event-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const event = trainingData.find(item => item.id === Number(btn.dataset.eventId));
+          if (event) openModal(event);
+        });
+      });
+    }
+
+    function renderRegionsBoard(events) {
+      const regions = ['East Africa','West Africa','Mexico','Philippines'];
+      els.regionsBoard.innerHTML = regions.map(region => {
+        const subset = events.filter(event => event.region === region);
+        const groups = [...new Set(subset.map(event => event.group))];
+        return `
+          <div class="region-card">
+            <h3>${region}</h3>
+            <div class="region-count">${subset.length}</div>
+            <p>${subset.length ? `${groups.length} group${groups.length === 1 ? '' : 's'} active in current filters.` : 'No visible opportunities under the current filters.'}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openModal(event) {
+      els.modalTitle.textContent = event.title;
+      els.modalBadges.innerHTML = `
+        <span class="badge area">${event.group}</span>
+        <span class="badge region">${event.region}</span>
+        <span class="badge mode">${event.format}</span>
+        <span class="badge quarter">${event.quarter}</span>
+      `;
+      els.modalMeta.innerHTML = `<strong>Date:</strong> ${formatDateRange(event.date, event.endDate)}<br><strong>Location:</strong> ${event.location}`;
+      els.modalDesc.textContent = event.description;
+      els.modalAudience.innerHTML = `<strong>Audience:</strong> ${event.audience}`;
+      els.modalBackdrop.classList.add('show');
+    }
+
+    function closeModal() {
+      els.modalBackdrop.classList.remove('show');
+    }
+
+    function render() {
+      const visible = getFilteredEvents();
+      updateStats(visible);
+      renderYear(visible);
+      renderRegionsBoard(visible);
+    }
+
+    function resetFilters() {
+      els.searchInput.value = '';
+      els.groupSelect.value = 'all';
+      els.regionSelect.value = 'all';
+      els.deliverySelect.value = 'all';
+      els.quarterList.querySelectorAll('input').forEach(input => input.checked = true);
+      render();
+    }
+
+    document.getElementById('showAllBtn').addEventListener('click', () => {
+      resetFilters();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.getElementById('scrollTopBtn').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.getElementById('resetBtn').addEventListener('click', resetFilters);
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    els.modalBackdrop.addEventListener('click', e => { if (e.target === els.modalBackdrop) closeModal(); });
+
+    [els.searchInput, els.groupSelect, els.regionSelect, els.deliverySelect].forEach(el => {
+      el.addEventListener('input', render);
+      el.addEventListener('change', render);
+    });
+
+    els.quarterList.addEventListener('change', render);
+
+    populateControls();
+    render();
+  </script>
+</body>
+</html>

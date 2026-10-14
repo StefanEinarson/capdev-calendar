@@ -648,7 +648,8 @@
       { id:16, title:'Wheat Community of Practice; pre-meeting', date:'2026-09-08', endDate:'2026-09-10', group:'Bioflow Training', region:'Pakistan', location:'Pakistan', format:'In Person', quarter:'Q3', categoryClass:'data', audience:'To be confirmed', description:'Bioflow training held alongside the Wheat Community of Practice pre-meeting.', registration:'To be confirmed', howToRegister:'Registration details to be confirmed.', contact:'CIMMYT', contactEmail:'', resource:'' },
       { id:17, title:'Intro to Bioflow', date:'2026-09-15', endDate:'2026-09-16', group:'Bioflow Training', region:'Global', location:'Global', format:'Virtual', quarter:'Q3', categoryClass:'data', audience:'Researchers (Beginner)', description:'Bioflow training for CIP breeding team.', registration:'To be confirmed', howToRegister:'Registration details to be confirmed.', contact:'CIP – International Potato Center', contactEmail:'', resource:'' },
       { id:18, title:'Wheat Community of Practice meeting', date:'2026-09-15', endDate:'2026-09-17', group:'Bioflow Training', region:'Southern Asia (Nepal)', location:'Southern Asia (Nepal)', format:'In Person', quarter:'Q3', categoryClass:'data', audience:'To be confirmed', description:'Bioflow training held alongside the Wheat Community of Practice meeting.', registration:'To be confirmed', howToRegister:'Registration details to be confirmed.', contact:'CIMMYT', contactEmail:'', resource:'' },
-      { id:19, title:'Breeding Data Management, Analysis, and AI', date:'2026-09-17', endDate:'2026-09-19', group:'Bioflow Training', region:'India', location:'India', format:'In Person', quarter:'Q3', categoryClass:'data', audience:'To be confirmed', description:'Bioflow training on breeding data management, analysis, and AI.', registration:'To be confirmed', howToRegister:'Registration details to be confirmed.', contact:'CIMMYT', contactEmail:'', resource:'' }
+      { id:19, title:'Breeding Data Management, Analysis, and AI', date:'2026-09-17', endDate:'2026-09-19', group:'Bioflow Training', region:'India', location:'India', format:'In Person', quarter:'Q3', categoryClass:'data', audience:'To be confirmed', description:'Bioflow training on breeding data management, analysis, and AI.', registration:'To be confirmed', howToRegister:'Registration details to be confirmed.', contact:'CIMMYT', contactEmail:'', resource:'' },
+      { id:20, title:'CIMMYT-BISA Regional Training Webinar: AI-Driven Crop Breeding & Data Management', date:'2026-10-22', endDate:'2026-10-22', group:'Webinar', region:'Asia', location:'Virtual · 08:00–11:00 India (IST) / 10:30–13:30 Philippines (02:30–05:30 UTC)', format:'Virtual', quarter:'Q4', categoryClass:'data', audience:'Crop breeders, breeding program staff, and data managers in Asia', description:'A regional webinar from CIMMYT and the Borlaug Institute for South Asia (BISA) on how AI and digital tools can support crop breeding programs: use cases for AI in breeding, digital field-data collection, AI-assisted image processing, breeding data management, and data analysis. It emphasizes how sound experimental design, reliable data collection, validation and AI-based analysis, combined with scientific judgment, help breeders make faster, better-informed decisions. Key resource persons: B.M. Prasanna (Managing Director, BISA; CIMMYT Regional Director for Asia), Keith Gardner (Head, Data Science, CIMMYT), and Christian Werner (Quantitative Geneticist, CIMMYT).', registration:'Open', howToRegister:'Register online via the CIMMYT-BISA registration form.', registrationUrl:'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=sWgQ2lWZw0CnKEUaIVmbs8J6uagBeP9LsA9pbb09DidUMTQxT1c5WDRBRzg4NUhYV0VVNVVXMVJISS4u', contact:'CIMMYT and BISA (www.cimmyt.org · www.bisa.org)', contactEmail:'', resource:'' }
     ];
 
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -825,7 +826,14 @@
       regEl.className = 'reg-badge ' + regClass;
       els.modalDesc.textContent = event.description;
       els.modalAudience.innerHTML = `<strong>Audience:</strong> ${event.audience}`;
-      document.getElementById('modalHowToReg').textContent = event.howToRegister || '—';
+      const howEl = document.getElementById('modalHowToReg');
+      howEl.textContent = event.howToRegister || '—';
+      if (event.registrationUrl) {
+        const a = document.createElement('a');
+        a.href = event.registrationUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = 'Open registration form';
+        howEl.appendChild(document.createElement('br')); howEl.appendChild(a);
+      }
       document.getElementById('modalContact').innerHTML = event.contactEmail
         ? `${event.contact}<br><a href="mailto:${event.contactEmail}">${event.contactEmail}</a>`
         : (event.contact || '—');
